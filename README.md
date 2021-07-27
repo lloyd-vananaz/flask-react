@@ -1,29 +1,31 @@
-# README #
+# Python
 
-This README would normally document whatever steps are necessary to get your application up and running.
+## Installation
+1. Check if you have python installed already by entering `python` in you terminal/command line/PowerShell.
+2. If you need to install Python, you may download it in the [Download Python Page](https://www.python.org/downloads/).
 
-### What is this repository for? ###
+## Using REPL (Read-Evaluate-Print-Loop)
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+1. Enter `python3` in terminal/command line/PowerShell.
+2. Start coding!
 
-### How do I get set up? ###
+## Running from file
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+1. Start terminal/command line/PowerShell.
+2. Enter `python3 <path/filename.py>`. Example: `python3 ./python-basics/1-numbers.py` to run `1-numbers.py` in this repository.
 
-### Contribution guidelines ###
+# How To Run?
 
-* Writing tests
-* Code review
-* Other guidelines
+## Run Flask API
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+1. Start terminal/command prompt.
+2. Navigate to the `api` directory.
+3. Create a virtual environment by entering `python3 -m venv venv`.
+4. Activate the virtual environment `venv/Scripts/activate`.
+5. Install dependencies `pip install .`.
+6. Run Flask.
+   ```
+   > $env:FLASK_APP = "flaskr"
+   > $env:FLASK_ENV = "development"
+   > flask run -h localhost -p 3030
+   ```
