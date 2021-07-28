@@ -8,6 +8,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'flask==2.0.1',
-        'flask-cors==3.0.10'
+        'flask-cors==3.0.10',
+        'python-dotenv==0.19.0'
     ],
 )
