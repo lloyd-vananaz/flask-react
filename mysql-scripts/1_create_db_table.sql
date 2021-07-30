@@ -1,0 +1,12 @@
+-- CREATE DATABASE tododb;
+
+USE tododb;
+
+CREATE TABLE Task (
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(50) NULL,
+    content VARCHAR(500) NULL,
+    is_deleted BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+-- DROP TABLE Task;

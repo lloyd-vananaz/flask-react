@@ -1,14 +1,19 @@
 from setuptools import find_packages, setup
 
 setup(
-    name='flaskr',
+    name='app',
     version='1.0.0',
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'flask==2.0.1',
-        'flask-cors==3.0.10',
-        'python-dotenv==0.19.0'
+        'Flask==2.0.1',
+        'Flask-Cors==3.0.10',
+        # 'mysql-connector==2.2.9',
+        # 'mysql-connector-python==8.0.26',
+        'python-dotenv==0.19.0',
+        'Flask-SQLAlchemy==2.5.1',
+        # 'Flask-Migrate==3.0.1',
+        'pymysql==1.0.2'
     ],
 )
