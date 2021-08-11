@@ -1,8 +1,8 @@
 from app import create_app, db
-from app.models import Task
+from app.tasks.models import Task
 
 
-app = create_app()
+app = create_app(built_react_path='../../react-app/build')
 
 
 # registers the function as a shell context function

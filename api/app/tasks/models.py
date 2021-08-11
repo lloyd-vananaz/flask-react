@@ -1,4 +1,4 @@
-from todo import db
+from app import db
 
 
 class Task(db.Model):
@@ -6,7 +6,6 @@ class Task(db.Model):
     title = db.Column(db.String(50), index=True, unique=False)
     content = db.Column(db.String(500), index=True, unique=False)
     is_deleted = db.Column(db.Boolean, index=True, default=False, unique=False)
-
 
     def __repr__(self):
         return '<Task {}>'.format(self.title)

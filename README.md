@@ -6,6 +6,8 @@ Make sure you have done the first time setup on each app. Follow the README file
 
 ### Running Flask and React App Separately
 
+Note: Token based authentication doesn't seem to be working when using this approach due to cookies not in the same port. Please use the other approach, 'Running Flask And React As One' to test authentication or you may comment out the `@jwt_required()` decorators in the routes so you will not need to login.
+
 1. Start a terminal.
 2. Navigate to `api` directory.
 3. Enter the following

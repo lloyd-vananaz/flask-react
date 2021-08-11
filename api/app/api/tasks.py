@@ -1,13 +1,18 @@
-from flask import request, Response
+from flask import Blueprint, request, Response, render_template
 from flask.json import jsonify
 from flask_cors.decorator import cross_origin
+from flask_jwt_extended import jwt_required
+
 from app import db
-from app.api import bp
-from app.models import Task
 from app.api.errors import bad_request
+from app.tasks.models import Task
 
 
-@bp.route('/task', methods=['GET'])
+bp = Blueprint('task', __name__, url_prefix='/api/task')
+
+
+@bp.route('', methods=['GET'])
+@jwt_required()
 @cross_origin()
 def get_tasks():
     result = []
@@ -16,7 +21,8 @@ def get_tasks():
         result.append(task.to_dict())
     return jsonify(result)
 
-@bp.route('/task', methods=['POST'])
+@bp.route('', methods=['POST'])
+@jwt_required()
 @cross_origin()
 def add_task():
     data = request.get_json() or {}
@@ -32,13 +38,15 @@ def add_task():
 
     return Response(status=201)
 
-@bp.route('/task/<int:id>', methods=['GET'])
+@bp.route('/<int:id>', methods=['GET'])
+@jwt_required()
 @cross_origin()
 def get_task_by_id(id):
     result = Task.query.get_or_404(id)
     return jsonify(result.to_dict())
 
-@bp.route('/task/<int:id>/edit', methods=['POST'])
+@bp.route('/<int:id>/edit', methods=['POST'])
+@jwt_required()
 @cross_origin()
 def edit_task_by_id(id):
     data = request.get_json() or {}
@@ -60,7 +68,8 @@ def edit_task_by_id(id):
 
     return Response(status=201)
 
-@bp.route('/task/<int:id>/delete', methods=['POST'])
+@bp.route('/<int:id>/delete', methods=['POST'])
+@jwt_required()
 @cross_origin()
 def delete_task_by_id(id):
     task = Task.query.get_or_404(id)

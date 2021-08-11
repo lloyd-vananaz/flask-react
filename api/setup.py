@@ -14,6 +14,10 @@ setup(
         'python-dotenv==0.19.0',
         'Flask-SQLAlchemy==2.5.1',
         # 'Flask-Migrate==3.0.1',
-        'pymysql==1.0.2'
+        'pymysql==1.0.2',
+        'WTForms-JSON==0.3.3',
+        'flask-login==0.5.0',
+        'email-validator==1.1.3',
+        'flask-jwt-extended==4.2.3'
     ],
 )

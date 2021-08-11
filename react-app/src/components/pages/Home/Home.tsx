@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -49,9 +51,13 @@ const TaskCard = styled(MatCard)`
     }
 `;
 
-const apiBaseUrl = 'http://localhost:3030/api';
+const apiBaseUrl = 'http://localhost:3030';
 
-const HomePage = (): React.ReactElement => {
+type Props = {
+    history: any;
+};
+
+const HomePage = ({ history }: Props): React.ReactElement => {
     const [textFieldAddTaskTitle, setTextFieldAddTaskTitle] = useState('');
     const [textFieldAddTaskContent, setTextFieldAddTaskContent] = useState('');
     const [textFieldEditTaskTitle, setTextFieldEditTaskTitle] = useState('');
@@ -59,30 +65,55 @@ const HomePage = (): React.ReactElement => {
     const [taskData, setTaskData] = useState([]);
 
     const getTasks = async () => {
-        return await axios.get(apiBaseUrl + '/task');
+        return await axios({
+            method: 'get',
+            url: apiBaseUrl + '/api/task',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': Cookies.get('csrf_access_token'),
+            },
+        });
     };
     const addTask = async (title: string, content: string) => {
         return await axios({
             method: 'post',
-            url: apiBaseUrl + '/task',
+            url: apiBaseUrl + '/api/task',
             data: {
                 title,
                 content,
+            },
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': Cookies.get('csrf_access_token'),
             },
         });
     };
     const editTask = async (id: number, title: string, content: string) => {
         return await axios({
             method: 'post',
-            url: apiBaseUrl + '/task/' + id + '/edit',
+            url: apiBaseUrl + '/api/task/' + id + '/edit',
             data: {
                 title,
                 content,
             },
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': Cookies.get('csrf_access_token'),
+            },
         });
     };
     const deleteTask = async (id: number) => {
-        return await axios.post(apiBaseUrl + '/task/' + id + '/delete');
+        return await axios({
+            method: 'post',
+            url: apiBaseUrl + '/api/task/' + id + '/delete',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': Cookies.get('csrf_access_token'),
+            },
+        });
+    };
+    const logOut = async () => {
+        return await axios.post(apiBaseUrl + '/auth/logout-with-cookies');
     };
 
     const transformTaskData = (tasks: any, editId = 0) => {
@@ -93,9 +124,13 @@ const HomePage = (): React.ReactElement => {
         return transformedTasks;
     };
     const refetchTaskData = () => {
-        getTasks().then(({ data }) => {
-            setTaskData(transformTaskData(data));
-        });
+        getTasks()
+            .then(({ data }) => {
+                setTaskData(transformTaskData(data));
+            })
+            .catch(() => {
+                history.push('/login');
+            });
     };
 
     const handleTextFieldAddTaskTitle = (event: any) => {
@@ -142,6 +177,11 @@ const HomePage = (): React.ReactElement => {
             }
         });
     };
+    const handleLogOut = () => {
+        logOut().then(({ data }) => {
+            if (data.success) history.push('/login');
+        });
+    };
 
     useEffect(() => {
         refetchTaskData();
@@ -149,6 +189,9 @@ const HomePage = (): React.ReactElement => {
 
     return (
         <Container>
+            <Button variant="outlined" onClick={handleLogOut}>
+                Log Out
+            </Button>
             <AddTaskCard>
                 <Typography variant="subtitle1">Add Todo</Typography>
                 <TextField
@@ -222,4 +265,4 @@ const HomePage = (): React.ReactElement => {
     );
 };
 
-export default HomePage;
+export default withRouter(HomePage);

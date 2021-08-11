@@ -1,7 +1,10 @@
 import React from 'react';
 // import logo from './logo.svg';
 // import './App.css';
+import { Route } from 'react-router-dom';
 import HomePage from './components/pages/Home';
+import LoginPage from './components/pages/Login';
+import RegisterPage from './components/pages/Register';
 
 // function App() {
 //     return (
@@ -19,7 +22,13 @@ import HomePage from './components/pages/Home';
 //     );
 // }
 function App() {
-    return <HomePage />;
+    return (
+        <>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
+        </>
+    );
 }
 
 export default App;
