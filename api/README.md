@@ -68,3 +68,8 @@ You can use SQLite as your database but you have to initialize it first.
 2. Activate the virtual environment `venv/Scripts/activate`.
 3. Enter `flask shell`.
 4. Try entering `db`. If no error is displayed then you are good to go.
+
+## Running Unit Tests
+
+- Enter `pytest` in terminal.
+- Enter `pytest <path\file.py> -s` in terminal to display `print` statements.

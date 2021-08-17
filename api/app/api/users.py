@@ -3,7 +3,7 @@ from flask.json import jsonify
 from flask_cors.decorator import cross_origin
 from flask_login import current_user
 
-from app import db
+from app.core import db
 from app.users.models import User
 from app.users.forms import RegisterUserForm
 

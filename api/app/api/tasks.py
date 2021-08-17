@@ -3,7 +3,7 @@ from flask.json import jsonify
 from flask_cors.decorator import cross_origin
 from flask_jwt_extended import jwt_required
 
-from app import db
+from app.core import db
 from app.api.errors import bad_request
 from app.tasks.models import Task
 

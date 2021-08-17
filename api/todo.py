@@ -2,7 +2,7 @@ from app import create_app, db
 from app.tasks.models import Task
 
 
-app = create_app(built_react_path='../../react-app/build')
+app = create_app(config_name='development', built_react_path='../../react-app/build')
 
 
 # registers the function as a shell context function
