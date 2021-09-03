@@ -1,3 +1,9 @@
+# TO RUN in Windows
+# Activate virtual environment venv\Scripts\activate
+# $env:FLASK_APP = "todo"
+# $env:FLASK_ENV = "development"
+# flask run -h localhost -p 3030
+
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask.json import jsonify
@@ -76,9 +82,3 @@ def edit_task(id):
 @app.route('/api/task/<int:id>/delete', methods=['POST'])
 def delete_task(id):
     pass
-
-
-# TO RUN in Windows
-# $env:FLASK_APP = "todo"
-# $env:FLASK_ENV = "development"
-# flask run -h localhost -p 3030

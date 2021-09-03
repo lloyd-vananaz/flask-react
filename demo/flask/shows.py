@@ -1,3 +1,9 @@
+# TO RUN in Windows
+# Activate virtual environment venv\Scripts\activate
+# $env:FLASK_APP = "shows"
+# $env:FLASK_ENV = "development"
+# flask run -h localhost -p 3030
+
 from flask import Flask
 
 
@@ -60,10 +66,3 @@ def get_by_id(id):
             result = show
 
     return result
-
-
-# TO RUN in Windows
-# Activate virtual environment venv\Scripts\activate
-# $env:FLASK_APP = "shows"
-# $env:FLASK_ENV = "development"
-# flask run -h localhost -p 3030
