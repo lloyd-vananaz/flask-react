@@ -1,7 +1,15 @@
 # TO RUN in Windows
-# Activate virtual environment venv\Scripts\activate
+# Run the following in the terminal without the hash sign:
+# venv\Scripts\activate
 # $env:FLASK_APP = "todo"
 # $env:FLASK_ENV = "development"
+# flask run -h localhost -p 3030
+
+# TO RUN in MacOS/Linux
+# Run the following in the terminal without the hash sign:
+# . venv/bin/activate
+# export FLASK_APP=todo
+# export FLASK_ENV=development
 # flask run -h localhost -p 3030
 
 from flask import Flask, request
