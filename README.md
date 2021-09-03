@@ -26,6 +26,7 @@ You can quickly run the following files with `python3 .\demo\mutability.py`
 
 - [mutability.py](demo/mutability.py)
 - [error_handling.py](demo/error_handling.py)
+- [unit_testing.py](demo/unit_testing.py)
 
 ### Flask Demo Apps
 

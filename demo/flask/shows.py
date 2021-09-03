@@ -15,10 +15,11 @@
 from flask import Flask
 
 
+# Flask Instance
 app = Flask(__name__)
 
 
-# Dummy Data
+# Dummy Data (List of Shows)
 my_shows = [
     {
         'id': 0,
@@ -59,13 +60,13 @@ my_shows = [
 
 
 # API to get all shows
-@app.route('/api/show/', methods=('GET',))
+@app.route('/api/show/', methods=('GET',)) # Endpoint and the HTTP Request Method
 def index():
     return { 'data': my_shows }
 
 
 # API to get details of one show using ID
-@app.route('/api/show/<int:id>', methods=('GET',))
+@app.route('/api/show/<int:id>', methods=('GET',)) # Endpoint passing the 'id' argument to the function below
 def get_by_id(id):
     result = {}
 

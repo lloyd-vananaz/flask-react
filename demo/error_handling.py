@@ -10,5 +10,5 @@ while should_repeat == 'y':
         print('Something else went wrong.')
     else: # Executes if no exceptions encountered
         print('Thank you!')
-    finally: # Executes after all blocks
+    finally: # Always executes after all blocks
         should_repeat = input('Again (y/n)? ')
