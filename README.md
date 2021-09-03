@@ -63,7 +63,7 @@ You can quickly run the following files with `python3 .\demo\mutability.py`
    > flask run -h localhost -p 3030
    ```
 
-## How To Flask API and React App
+## How To Run Flask API and React App
 
 Make sure you have done the first time setup on each app.
 
